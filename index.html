@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Achyuth Anand — Cybersecurity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg:       #0D1117;
+  --surface:  #161B22;
+  --border:   #21262D;
+  --text:     #E6EDF3;
+  --muted:    #8B949E;
+  --blue:     #58A6FF;
+  --amber:    #F0883E;
+  --green:    #3FB950;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #0D1117;
+    --surface: #161B22;
+    --border: #21262D;
+    --text: #E6EDF3;
+    --muted: #8B949E;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--blue);
+  letter-spacing: 0.02em;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 48px 80px;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--blue);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 6px;
+}
+.cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--blue);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.hero-summary {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+.hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-primary {
+  background: var(--blue);
+  color: #0D1117;
+  border: 1px solid var(--blue);
+}
+.btn-primary:hover { background: #79b8ff; border-color: #79b8ff; }
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { border-color: var(--muted); }
+
+/* ── SECTIONS ── */
+section {
+  padding: 80px 48px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--blue);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+.skill-group h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 12px;
+  text-transform: none;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--surface);
+}
+.tag.highlight { border-color: var(--blue); color: var(--blue); }
+.tag.amber { border-color: var(--amber); color: var(--amber); }
+
+/* ── PROJECTS ── */
+.projects-list { display: flex; flex-direction: column; gap: 2px; }
+.project-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 32px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+.project-item:hover { border-color: #30363D; }
+.project-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.project-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.project-org {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 4px;
+}
+.project-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.project-findings {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 16px;
+}
+.finding {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: rgba(240,136,62,0.12);
+  color: var(--amber);
+  border: 1px solid rgba(240,136,62,0.25);
+}
+.project-stats {
+  display: flex; gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--green);
+}
+
+/* ── EXPERIENCE ── */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-left { padding-top: 4px; }
+.timeline-org {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.timeline-location {
+  font-size: 12px;
+  color: var(--muted);
+}
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.timeline-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── CONTACT ── */
+.contact-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 48px;
+  text-align: center;
+}
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.contact-sub {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); max-width: 960px; margin: 0 auto; }
+
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  section { padding: 60px 24px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  .contact-block { padding: 32px 24px; }
+  footer { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">achyuth@stockholm:~$</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Stockholm, Sweden</p>
+  <h1 class="hero-name">Achyuth Anand</h1>
+  <p class="hero-title">Cybersecurity Specialist<span class="cursor"></span></p>
+  <p class="hero-summary">
+    Master's student at Stockholm University with hands-on experience exploiting and patching real-world vulnerabilities — SSTI, pickle deserialization RCE, JWT token forgery, SQL injection, and path traversal. Background in secure protocol design and penetration testing.
+  </p>
+  <div class="hero-links">
+    <a href="mailto:achyuth.acd@outlook.com" class="btn btn-primary">Get in touch</a>
+    <a href="https://linkedin.com/in/achyuth-anand-27308b26b/" class="btn btn-secondary" target="_blank">LinkedIn</a>
+    <a href="https://github.com/AshWiz03" class="btn btn-secondary" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-heading">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Security</h3>
+      <div class="tags">
+        <span class="tag highlight">SSTI</span>
+        <span class="tag highlight">Pickle RCE</span>
+        <span class="tag highlight">JWT Forgery</span>
+        <span class="tag highlight">SQL Injection</span>
+        <span class="tag highlight">Path Traversal</span>
+        <span class="tag highlight">OWASP Top 10</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">C / C++</span>
+        <span class="tag">Rust</span>
+        <span class="tag">Solidity</span>
+        <span class="tag">Haskell</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools</h3>
+      <div class="tags">
+        <span class="tag">Docker</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Flask</span>
+        <span class="tag">PyMuPDF</span>
+        <span class="tag">Wireshark</span>
+        <span class="tag">FTK Imager</span>
+        <span class="tag">Autopsy</span>
+        <span class="tag">PGP</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Blockchain</h3>
+      <div class="tags">
+        <span class="tag">Hedera Hashgraph</span>
+        <span class="tag">Hyperledger</span>
+        <span class="tag">Ethereum</span>
+        <span class="tag">Corda</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Work</p>
+  <h2 class="section-heading">Key Projects</h2>
+  <div class="projects-list">
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">Tatou — Secure PDF Watermarking Platform</span>
+        <span class="project-org">Stockholm University DSV</span>
+      </div>
+      <p class="project-desc">
+        Implemented the RMAP authenticated handshake protocol for verified watermarked PDF distribution using PGP encryption and nonce-based replay protection. Developed HMAC-Text-Render watermarking method embedding Fernet-encrypted tokens as invisible text via PyMuPDF. Conducted offensive security operations against live peer deployments — exploited deserialization, forged auth tokens, and achieved RCE on the test runner via header injection.
+      </p>
+      <div class="project-findings">
+        <span class="finding">Pickle Deserialization RCE · OWASP A08</span>
+        <span class="finding">JWT Token Forgery · OWASP A02</span>
+        <span class="finding">SSTI via X-Forwarded-For · OWASP A03</span>
+      </div>
+      <div class="project-stats">
+        <span>5 flags captured</span>
+        <span>3 watermarks defeated</span>
+        <span>70% test coverage · 18 endpoints</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">Hyperledger Solang Compiler Optimization</span>
+        <span class="project-org">Linux Foundation · 2024</span>
+      </div>
+      <p class="project-desc">
+        Analyzed LALRPOP parser and ICR architecture of the Hyperledger Solang Solidity-to-Wasm compiler. Redesigned the pass pipeline to improve data flow between semantic analysis and lowering phases, producing cleaner target IR.
+      </p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">Ransomware-Proof Windows Backup System</span>
+        <span class="project-org">Amrita University</span>
+      </div>
+      <p class="project-desc">
+        Built a Shannon entropy scanning tool to detect ransomware encryption activity by analyzing structural metadata and entropy variations in high-density file formats. Engineered a chunk-based deduplication backup pipeline for immutable recovery points.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Background</p>
+  <h2 class="section-heading">Experience & Education</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <p class="timeline-org">Stockholm University</p>
+        <p class="timeline-location">Sweden · 2025–Pres.</p>
+      </div>
+      <div>
+        <p class="timeline-role">M.Sc. Computer & Systems Sciences</p>
+        <p class="timeline-desc">Specializing in application security, secure protocol design, and penetration testing. Coursework covers formal verification, software supply chain security, and secure web application development.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <p class="timeline-org">IIT Madras</p>
+        <p class="timeline-location">Chennai, India</p>
+      </div>
+      <div>
+        <p class="timeline-role">Intern · Cybersecurity, Trust & Reliability Centre</p>
+        <p class="timeline-desc">Developed Solidity smart contracts on Hedera Hashgraph via Remix IDE. Served as TA for distributed ledger workshops across IIT Madras, Shiv Nadar University, and IIIT-DM. Contributed to an industry-funded device authorization system to prevent digital media piracy.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <p class="timeline-org">DP2Ventures</p>
+        <p class="timeline-location">New York · Remote</p>
+      </div>
+      <div>
+        <p class="timeline-role">Intern · Research</p>
+        <p class="timeline-desc">Co-authored (first author) an internal book chapter on Artificial Intelligence applications in Digital Twins.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <p class="timeline-org">Tamil Nadu Cybercrime Cell</p>
+        <p class="timeline-location">Chennai, India</p>
+      </div>
+      <div>
+        <p class="timeline-role">Intern · Digital Forensics</p>
+        <p class="timeline-desc">Investigated social media fraud and fake bank transaction patterns. Produced forensic documentation on malware tracking and digital crime reporting procedures.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-left">
+        <p class="timeline-org">Amrita University</p>
+        <p class="timeline-location">India · 2021–2025</p>
+      </div>
+      <div>
+        <p class="timeline-role">B.Tech Computer Science (Cybersecurity) · GPA 7.99</p>
+        <p class="timeline-desc">Core curriculum in cybersecurity, distributed systems, and computer architecture. Final year project on ransomware detection and backup resilience.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top: 80px; padding-bottom: 80px;">
+  <div class="contact-block">
+    <h2 class="contact-heading">Let's work together</h2>
+    <p class="contact-sub">Open to cybersecurity roles in Sweden — offensive security, secure development, or vulnerability research.</p>
+    <div class="contact-links">
+      <a href="mailto:achyuth.acd@outlook.com" class="btn btn-primary">achyuth.acd@outlook.com</a>
+      <a href="https://linkedin.com/in/achyuth-anand-27308b26b/" class="btn btn-secondary" target="_blank">LinkedIn</a>
+      <a href="https://github.com/AshWiz03" class="btn btn-secondary" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Achyuth Anand · Stockholm, Sweden · Built with HTML/CSS</p>
+</footer>
+
+</body>
+</html>
