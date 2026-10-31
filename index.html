@@ -132,14 +132,14 @@ footer{padding:32px 48px;border-top:1px solid var(--border);font-family:var(--fo
 
     <div class="project-item">
       <div class="project-header"><span class="project-title">Tatou — Secure PDF Watermarking Platform</span><span class="project-org">Stockholm University DSV</span></div>
-      <p class="project-desc">Built a secure PDF watermarking platform implementing the RMAP authenticated handshake protocol using PGP encryption and nonce-based replay protection. Developed the HMAC-Text-Render watermarking method embedding Fernet-encrypted, HMAC-SHA256-signed tokens as invisible text via PyMuPDF for forensic document traceability. Conducted offensive security operations against live peer deployments, capturing 5 flags across 4 groups using three distinct attack vectors. Patched key vulnerabilities including path traversal, predictable SHA1 link tokens replaced with cryptographically secure random tokens, hardcoded secrets, SQL injection, and missing document ownership checks. Set up CI/CD with GitHub Actions and achieved 70% test coverage across all 18 API endpoints. Wrote CC assurance tests verifying blind enumeration resistance (FCS_COP.1) and link predictability (FDP_UCT.1).</p>
+      <p class="project-desc">Built a secure PDF watermarking platform implementing the RMAP authenticated handshake protocol using PGP encryption and nonce-based replay protection. Developed the HMAC-Text-Render watermarking method embedding Fernet-encrypted, HMAC-SHA256-signed tokens as invisible text via PyMuPDF for forensic document traceability. Conducted offensive security operations against live peer deployments, capturing 17 flags across 12 groups using  distinct attack vectors. Patched key vulnerabilities including path traversal, predictable SHA1 link tokens replaced with cryptographically secure random tokens, hardcoded secrets, SQL injection, and missing document ownership checks. Set up CI/CD with GitHub Actions and achieved 70% test coverage across all 18 API endpoints. Wrote CC assurance tests verifying blind enumeration resistance (FCS_COP.1) and link predictability (FDP_UCT.1).</p>
       <div class="project-findings">
         <span class="finding">Pickle Deserialization RCE · OWASP A08</span>
         <span class="finding">JWT Token Forgery · OWASP A02</span>
         <span class="finding">SSTI via X-Forwarded-For · OWASP A03</span>
       </div>
       <div class="project-stats">
-        <span>5 flags captured</span>
+        <span>17 flags captured</span>
         <span>3 watermarks defeated</span>
         <span>70% test coverage · 18 endpoints</span>
       </div>
